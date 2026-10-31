@@ -135,14 +135,21 @@ tbody td.L{text-align:left}
 <main>
 <div class="ubox">
   <h2>Atualizar para novo quadrimestre</h2>
-  <p>Os dados do Q1/2026 já estão incorporados e carregam automaticamente. Para novos quadrimestres, carregue o arquivo abaixo e clique em Recalcular.</p>
-  <div class="ugrid" style="grid-template-columns:1fr">
+  <p>Os dados do Q1/2026 já estão incorporados e carregam automaticamente. Para novos quadrimestres, carregue os <strong>dois arquivos</strong> abaixo (mesmo quadrimestre) e clique em Recalcular.</p>
+  <div class="ugrid">
     <div class="uc" id="c1">
       <input type="file" accept=".xlsx,.xls" id="f1" onchange="lf(1,this)">
       <div class="ico">📋</div>
       <h3>Vínculo e Acompanhamento Territorial</h3>
       <p><em>Vínculo_e_Acompanhamento_Territorial_e_Qualidade.xlsx</em></p>
       <div class="st" id="s1">Clique ou arraste aqui</div>
+    </div>
+    <div class="uc" id="c2">
+      <input type="file" accept=".xlsx,.xls" id="f2" onchange="lf(2,this)">
+      <div class="ico">📊</div>
+      <h3>Qualidade — Conceito obtido por indicador</h3>
+      <p><em>Qualidade___Conceito_obtido_por_indicador.xlsx</em></p>
+      <div class="st" id="s2">Clique ou arraste aqui</div>
     </div>
   </div>
   <div class="em" id="em"></div>
@@ -156,7 +163,7 @@ COMPONENTES = Σ[peso_grupo × (Oti×4+Bom×3+Suf×2+Reg×1)] / Σ[peso_grupo ×
   bx(CVAT eSF+eAP)×2 · by(Qual eSF+eAP)×7 · bz(Qual eSB)×6 · be(Qual eMulti)×2
 
 INDICADORES = (7 × I_eSF_eAP + 6 × I_eSB + 2 × I_eMulti) / 15
-  onde cada I_n = [(Oti×4+Bom×3+Suf×2+Reg×1) / (TE_n×4)] × 100 (colunas Qualidade do mesmo arquivo)</div>
+  onde cada I_n = [(Oti×4+Bom×3+Suf×2+Reg×1) / (TE_n×4)] × 100 (arquivo "Conceito obtido por indicador": desempenho médio de todos os indicadores do grupo)</div>
 </div>
 
 <div class="fb">
@@ -202,7 +209,7 @@ INDICADORES = (7 × I_eSF_eAP + 6 × I_eSB + 2 × I_eMulti) / 15
 
 <script>
 var STATIC=[["POTENGI",1,11,0.0,0.0,17.6,82.4,95.6,86.4,1,8926],["PEDRA BRANCA",2,29,0.0,0.0,23.9,76.1,93.8,81.7,2,42257],["FARIAS BRITO",3,21,0.0,0.0,22.6,77.4,93.1,84.2,3,18557],["HIDROLÂNDIA",4,16,0.0,0.0,26.1,73.9,92.7,76.3,3,18225],["GUARAMIRANGA",5,7,0.0,0.0,30.0,70.0,92.6,79.1,3,5819],["JAGUARIBARA",6,11,0.0,0.0,25.0,75.0,92.2,81.1,3,10656],["ALTANEIRA",7,8,0.0,0.0,25.0,75.0,92.0,79.4,2,6970],["PIQUET CARNEIRO",8,18,0.0,0.0,30.8,69.2,91.1,80.9,2,17202],["NOVA OLINDA",9,15,0.0,0.0,31.8,68.2,91.1,78.5,2,15960],["PEREIRO",10,15,0.0,0.0,31.8,68.2,91.1,72.1,2,15869],["VARJOTA",11,18,0.0,0.0,33.3,66.7,90.9,83.5,2,18660],["ANTONINA DO NORTE",12,6,0.0,0.0,33.3,66.7,90.9,75.6,2,7484],["PALHANO",13,12,0.0,0.0,29.4,70.6,90.5,86.5,2,9671],["GROAÍRAS",14,10,0.0,0.0,33.3,66.7,90.5,77.7,3,11313],["QUIXELÔ",15,17,0.0,0.0,32.0,68.0,90.4,71.7,3,16992],["PORANGA",16,11,0.0,0.0,37.5,62.5,90.1,74.0,1,12423],["JIJOCA DE JERICOACOARA",17,20,0.0,0.0,34.5,65.5,89.7,76.7,2,27662],["MORRINHOS",18,18,0.0,0.0,40.7,59.3,89.0,74.6,2,23608],["PACUJÁ",19,8,0.0,0.0,36.4,63.6,88.8,72.9,3,6345],["BAIXIO",20,7,0.0,0.0,40.0,60.0,88.8,77.0,3,5832],["CRUZ",21,24,0.0,0.0,52.8,47.2,85.3,73.9,2,31847],["SOLONÓPOLE",22,16,0.0,0.0,56.0,44.0,84.9,66.3,3,18736],["MERUOCA",23,14,0.0,0.0,52.4,47.6,84.7,68.5,2,15749],["PENAFORTE",24,10,0.0,0.0,60.0,40.0,84.5,73.1,2,9308],["CHAVAL",25,16,0.0,0.0,56.5,43.5,83.0,69.9,1,12805],["CAPISTRANO",26,14,0.0,0.0,57.1,42.9,82.9,66.9,1,17760],["GRANJEIRO",27,5,0.0,0.0,71.4,28.6,78.1,61.3,2,4960],["ACARAÚ",28,56,0.0,2.4,48.8,48.8,87.6,73.5,2,68758],["MARCO",29,25,0.0,2.6,18.4,78.9,95.3,83.2,2,27064],["SANTANA DO ACARAÚ",30,26,0.0,2.6,43.6,53.8,86.9,68.7,1,32043],["ORÓS",31,23,0.0,2.9,50.0,47.1,87.7,83.0,3,20019],["BELA CRUZ",32,22,0.0,3.0,33.3,63.6,88.0,73.8,1,34441],["JAGUARETAMA",33,20,0.0,3.4,37.9,58.6,85.4,74.0,2,17625],["RERIUTABA",34,19,0.0,3.6,28.6,67.9,90.2,78.5,2,19059],["ALTO SANTO",35,18,0.0,3.8,57.7,38.5,81.9,68.7,2,14418],["JAGUARUANA",36,32,0.0,4.1,32.7,63.3,91.9,79.2,2,33070],["SALITRE",37,13,0.0,4.8,19.0,76.2,91.8,76.9,1,17220],["PORTEIRAS",38,14,0.0,4.8,23.8,71.4,89.6,77.2,2,17745],["HORIZONTE",39,55,0.0,4.9,43.2,51.9,85.4,71.7,3,79934],["ALCÂNTARAS",40,13,0.0,5.3,26.3,68.4,91.8,77.4,2,11754],["IPAPORANGA",41,13,0.0,5.3,31.6,63.2,89.8,71.8,2,11937],["CHORÓ",42,13,0.0,5.3,36.8,57.9,89.7,79.3,1,12380],["MARTINÓPOLE",43,13,0.0,5.3,26.3,68.4,88.6,75.8,2,11232],["IBICUITINGA",44,13,0.0,5.3,36.8,57.9,87.5,77.4,2,11979],["SÃO LUÍS DO CURU",45,12,0.0,5.3,42.1,52.6,87.4,67.0,2,10962],["MASSAPÊ",46,22,0.0,5.6,41.7,52.8,84.5,67.1,2,39633],["NOVO ORIENTE",47,20,0.0,5.9,47.1,47.1,88.8,70.7,1,29043],["QUITERIANÓPOLIS",48,23,0.0,5.9,41.2,52.9,88.0,74.8,2,20506],["BREJO SANTO",49,45,0.0,5.9,58.8,35.3,83.9,70.8,3,53778],["BARREIRA",50,23,0.0,5.9,64.7,29.4,79.6,68.2,1,23351],["PIRES FERREIRA",51,11,0.0,6.2,18.8,75.0,90.3,74.6,2,10952],["ABAIARA",52,11,0.0,6.2,56.2,37.5,81.5,69.1,2,10282],["CATUNDA",53,10,0.0,6.7,40.0,53.3,89.3,82.1,2,10817],["NOVA RUSSAS",54,29,0.0,6.8,36.4,56.8,89.1,75.0,3,32014],["VÁRZEA ALEGRE",55,29,0.0,6.8,38.6,54.5,85.3,66.4,3,40771],["AMONTADA",56,25,0.0,7.1,33.3,59.5,85.5,69.0,1,44342],["TAMBORIL",57,26,0.0,7.7,28.2,64.1,92.3,78.9,2,25331],["TARRAFAS",58,9,0.0,7.7,30.8,61.5,90.3,80.3,2,7626],["ITAIÇABA",59,9,0.0,7.7,30.8,61.5,88.7,82.2,2,7779],["BEBERIBE",60,40,0.0,7.9,63.5,28.6,79.8,68.1,3,55666],["MULUNGU",61,8,0.0,8.3,41.7,50.0,81.7,68.8,2,10993],["URUOCA",62,16,0.0,8.7,21.7,69.6,87.4,75.1,2,14243],["JATI",63,7,0.0,9.1,27.3,63.6,89.4,77.7,3,8100],["MILAGRES",64,30,0.0,9.1,40.9,50.0,86.3,69.7,2,26860],["CATARINA",65,15,0.0,9.1,40.9,50.0,86.2,72.7,2,9577],["BARRO",66,22,0.0,9.1,45.5,45.5,84.7,74.1,3,19669],["MILHÃ",67,14,0.0,9.5,28.6,61.9,87.1,76.5,2,14635],["AIUABA",68,13,0.0,10.0,45.0,45.0,82.9,68.3,2,14220],["MIRAÍMA",69,12,0.0,10.5,26.3,63.2,84.0,63.5,1,14736],["IPAUMIRIM",70,13,0.0,10.5,42.1,47.4,80.7,67.3,3,12441],["APUIARÉS",71,12,0.0,10.5,63.2,26.3,74.5,55.8,2,13219],["CROATÁ",72,19,0.0,10.7,32.1,57.1,86.5,70.5,2,18007],["ERERÊ",73,6,0.0,11.1,55.6,33.3,79.4,68.6,2,6393],["ARATUBA",74,12,0.0,11.1,61.1,27.8,76.7,64.8,2,11459],["QUIXERAMOBIM",75,52,0.0,11.2,41.2,47.5,83.2,70.5,3,85797],["CRATO",76,77,0.0,12.2,57.7,30.1,80.9,72.4,4,138232],["DEPUTADO IRAPUAN PINHEIRO",77,11,0.0,12.5,18.8,68.8,90.3,81.9,2,9172],["BARROQUINHA",78,16,0.0,12.5,41.7,45.8,82.4,69.2,1,14977],["PALMÁCIA",79,11,0.0,12.5,62.5,25.0,75.0,64.3,1,10339],["SANTANA DO CARIRI",80,15,0.0,13.0,34.8,52.2,84.8,71.7,2,17388],["INDEPENDÊNCIA",81,24,0.0,13.5,48.6,37.8,81.3,64.7,2,24530],["IBARETAMA",82,15,0.0,13.6,22.7,63.6,89.3,77.0,1,12191],["SENADOR SÁ",83,10,0.0,14.3,28.6,57.1,87.5,69.5,2,7519],["IGUATU",84,79,0.0,14.3,46.2,39.5,81.2,71.3,3,102251],["CANINDÉ",85,33,0.0,14.3,50.0,35.7,75.4,57.8,3,77207],["SÃO BENEDITO",86,33,0.0,15.4,30.8,53.8,89.2,79.9,3,49829],["JARDIM",87,26,0.0,15.4,53.8,30.8,77.6,65.1,3,28707],["PENTECOSTE",88,30,0.0,15.6,48.9,35.6,78.8,62.6,2,39715],["OCARA",89,25,0.0,15.8,47.4,36.8,84.3,70.5,1,25218],["ITAREMA",90,31,0.0,16.0,60.0,24.0,77.1,60.4,1,45465],["ARNEIROZ",91,8,0.0,16.7,16.7,66.7,88.3,68.1,2,7619],["GENERAL SAMPAIO",92,8,0.0,16.7,33.3,50.0,83.5,62.9,2,6924],["ICAPUÍ",93,19,0.0,17.2,55.2,27.6,75.7,61.5,2,22367],["ITAPIÚNA",94,11,0.0,17.6,41.2,41.2,75.3,57.9,2,18228],["ARARENDÁ",95,11,0.0,18.8,25.0,56.2,85.7,64.9,2,11485],["MADALENA",96,17,0.0,20.0,56.0,24.0,73.2,57.4,2,17264],["CARIRÉ",97,18,0.0,22.2,37.0,40.7,82.8,70.7,2,18075],["FORQUILHA",98,18,0.0,22.2,51.9,25.9,73.3,57.6,3,25127],["URUBURETAMA",99,20,0.0,22.6,58.1,19.4,75.2,65.6,2,21279],["TURURU",100,14,0.0,22.7,22.7,54.5,82.0,55.8,1,15457],["TEJUÇUOCA",101,20,0.0,23.3,56.7,20.0,73.4,61.6,1,17626],["FRECHEIRINHA",102,14,0.0,23.8,42.9,33.3,73.3,60.3,2,16362],["ACARAPE",103,14,0.0,23.8,57.1,19.0,71.7,51.5,2,14306],["CEDRO",104,28,0.0,24.4,29.3,46.3,83.9,77.1,3,22678],["CARIÚS",105,15,0.0,25.0,29.2,45.8,81.2,62.6,3,17333],["PARACURU",106,28,0.0,25.0,45.5,29.5,72.8,54.2,2,41447],["UMARI",107,9,0.0,38.5,46.2,15.4,67.7,54.2,2,6993],["BARBALHA",108,54,1.2,2.5,47.5,48.8,87.0,75.5,3,80217],["RUSSAS",109,53,1.2,12.0,21.7,65.1,88.6,78.8,3,74582],["GRANJA",110,43,1.5,6.0,41.8,50.7,86.6,74.8,2,55633],["BOA VIAGEM",111,41,1.6,12.7,60.3,25.4,77.4,64.1,3,52169],["CAMOCIM",112,39,1.7,3.3,65.0,30.0,79.6,61.1,3,65031],["MOMBAÇA",113,33,1.9,3.8,15.4,78.8,94.8,83.3,1,38649],["VIÇOSA DO CEARÁ",114,35,1.9,3.8,45.3,49.1,85.1,68.9,3,62609],["GUARACIABA DO NORTE",115,35,1.9,9.3,57.4,31.5,79.0,69.1,2,44294],["MISSÃO VELHA",116,36,1.9,27.8,46.3,24.1,73.6,59.6,3,38767],["REDENÇÃO",117,31,2.2,10.9,26.1,60.9,89.9,81.4,2,28359],["BATURITÉ",118,31,2.2,19.6,56.5,21.7,73.1,61.9,2,36978],["SOBRAL",119,139,2.3,18.3,37.9,41.6,84.7,73.5,4,215286],["JUAZEIRO DO NORTE",120,163,2.4,8.4,61.8,27.3,77.8,72.4,4,303004],["SENADOR POMPEU",121,28,2.4,12.2,43.9,41.5,82.9,69.0,2,25143],["MAURITI",122,55,2.5,6.3,58.2,32.9,81.1,70.1,2,47406],["ITAPAGÉ",123,51,2.5,16.2,56.2,25.0,75.3,63.8,2,49086],["GUAIÚBA",124,26,2.6,20.5,46.2,30.8,80.5,70.0,2,25085],["CASCAVEL",125,48,2.7,14.7,54.7,28.0,75.3,61.8,3,76365],["IRAUÇUBA",126,23,2.9,0.0,48.6,48.6,86.8,71.2,1,24751],["ITATIRA",127,24,2.9,5.7,48.6,42.9,85.2,74.7,1,21087],["QUIXADÁ",128,44,2.9,11.6,63.8,21.7,74.6,62.2,3,88483],["MARACANAÚ",129,132,2.9,17.0,50.0,30.1,71.9,55.9,4,249684],["TRAIRI",130,37,3.1,26.6,51.6,18.8,72.4,59.0,2,61516],["LIMOEIRO DO NORTE",131,41,3.2,4.8,50.0,41.9,80.1,67.2,3,62285],["CHOROZINHO",132,20,3.3,6.7,56.7,33.3,83.2,73.5,1,20763],["ASSARÉ",133,18,3.4,6.9,13.8,75.9,93.8,87.3,2,22212],["ICÓ",134,37,3.4,6.9,55.2,34.5,78.4,67.6,3,64802],["ARARIPE",135,20,3.4,17.2,44.8,34.5,72.8,55.8,2,20223],["COREAÚ",136,17,3.6,0.0,35.7,60.7,91.5,80.6,1,21438],["CARNAUBAL",137,19,3.6,7.1,32.1,57.1,87.6,77.7,2,17758],["BANABUIÚ",138,19,3.6,10.7,46.4,39.3,83.8,68.0,2,17654],["UBAJARA",139,36,3.7,1.9,31.5,63.0,90.4,83.1,3,34312],["PACATUBA",140,53,3.7,12.3,61.7,22.2,74.4,66.1,3,85873],["FORTIM",141,17,3.8,3.8,38.5,53.8,87.4,74.8,2,18052],["SANTA QUITÉRIA",142,35,3.8,9.4,60.4,26.4,75.7,65.3,2,41647],["TIANGUÁ",143,47,4.0,8.0,50.7,37.3,81.4,73.7,3,86137],["GRAÇA",144,16,4.3,0.0,43.5,52.2,86.2,76.8,2,14174],["MONSENHOR TABOSA",145,15,4.3,8.7,52.2,34.8,78.3,60.9,2,17664],["ITAPIPOCA",146,84,4.3,18.8,45.7,31.2,75.5,54.8,3,137892],["IPUEIRAS",147,30,4.4,24.4,46.7,24.4,74.1,59.8,2,38285],["SABOEIRO",148,13,4.8,14.3,52.4,28.6,73.0,55.7,2,14036],["TABULEIRO DO NORTE",149,28,4.9,12.2,51.2,31.7,76.9,63.2,3,32044],["IBIAPINA",150,26,5.1,2.6,41.0,51.3,88.0,80.0,3,24649],["ARACATI",151,50,5.1,11.4,39.2,44.3,83.4,75.0,3,78752],["FORTALEZA",152,854,5.2,26.1,57.9,10.8,69.3,58.2,4,2574412],["CAMPOS SALES",153,23,5.4,13.5,56.8,24.3,76.7,61.7,2,26082],["PARAMOTI",154,12,5.6,11.1,44.4,38.9,77.6,60.5,2,10528],["PACOTI",155,12,5.6,16.7,50.0,27.8,78.1,65.4,3,11442],["EUSÉBIO",156,56,5.8,5.8,41.9,46.5,82.4,69.2,3,80304],["AURORA",157,22,5.9,5.9,41.2,47.1,84.4,72.7,2,24267],["ITAITINGA",158,31,6.0,10.0,46.0,38.0,82.6,73.5,3,70679],["CAUCAIA",159,133,6.0,16.5,60.6,17.0,71.8,60.1,3,375730],["QUIXERÉ",160,22,6.1,6.1,30.3,57.6,85.2,63.2,3,21607],["PACAJUS",161,39,6.3,6.3,54.0,33.3,79.2,67.0,3,74825],["SÃO GONÇALO DO AMARANTE",162,53,6.3,11.4,49.4,32.9,75.9,59.7,3,57499],["PINDORETAMA",163,21,6.5,32.3,58.1,3.2,66.1,49.5,2,24607],["PARAIPABA",164,30,6.7,13.3,71.1,8.9,72.1,57.9,2,33896],["TAUÁ",165,31,6.9,12.1,50.0,31.0,80.1,68.3,3,64255],["ACOPIARA",166,35,7.0,7.0,54.4,31.6,80.8,73.1,2,46215],["MARANGUAPE",167,73,7.0,17.4,54.8,20.9,74.3,58.1,4,108937],["ARACOIABA",168,27,7.5,22.5,47.5,22.5,70.9,55.8,1,26696],["MORADA NOVA",169,50,7.5,25.0,55.0,12.5,68.5,56.3,3,65323],["SÃO JOÃO DO JAGUARIBE",170,9,7.7,7.7,30.8,53.8,86.3,78.4,3,5792],["PARAMBU",171,22,8.6,25.7,54.3,11.4,68.1,51.6,1,32816],["JUCÁS",172,20,9.4,9.4,34.4,46.9,80.1,62.5,2,24591],["IRACEMA",173,14,9.5,0.0,47.6,42.9,79.7,64.4,3,14411],["UMIRIM",174,13,9.5,33.3,42.9,14.3,65.6,45.8,2,17804],["CRATEÚS",175,64,9.6,18.3,49.0,23.1,76.0,69.6,3,79809],["LAVRAS DA MANGABEIRA",176,27,9.8,12.2,41.5,36.6,78.5,63.6,2,32123],["CARIRIAÇU",177,27,10.0,2.5,50.0,37.5,81.0,74.9,2,27482],["POTIRETAMA",178,7,10.0,20.0,40.0,30.0,74.5,58.6,2,6129],["AQUIRAZ",179,63,10.1,10.1,59.6,20.2,75.2,64.2,3,84737],["CARIDADE",180,11,11.1,5.6,55.6,27.8,69.0,47.6,1,16419],["IPU",181,36,11.1,20.4,37.0,31.5,75.7,62.3,2,42968],["JAGUARIBE",182,36,12.5,8.9,17.9,60.7,82.6,73.5,2,35124],["MORAÚJO",183,9,15.4,7.7,53.8,23.1,71.8,65.5,3,8516],["MUCAMBO",184,15,17.4,0.0,34.8,47.8,77.0,62.8,2,14009]];
-var wb1=null,DATA=[],SK=null,SA=true;
+var wb1=null,wb2=null,DATA=[],SK=null,SA=true;
 
 window.onload=function(){
   DATA=STATIC.map(function(r){
@@ -217,7 +224,7 @@ function lf(n,inp){
   rd.onload=function(e){
     try{
       var wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
-      wb1=wb;
+      if(n===1)wb1=wb;else wb2=wb;
       document.getElementById('c'+n).className='uc ok';
       document.getElementById('s'+n).textContent='✓ '+f.name;
       hideE();
@@ -226,7 +233,7 @@ function lf(n,inp){
       document.getElementById('s'+n).textContent='✗ Erro: '+ex.message;
       showE('Erro ao ler arquivo '+n+': '+ex.message);
     }
-    document.getElementById('bp').disabled=!wb1;
+    document.getElementById('bp').disabled=!(wb1&&wb2);
   };
   rd.onerror=function(){
     document.getElementById('c'+n).className='uc er';
@@ -239,13 +246,17 @@ function lf(n,inp){
 function processar(){
   hideE();
   try{
+    if(!wb1||!wb2) throw new Error('Carregue os dois arquivos.');
+    var q1=getQ(wb1),q2=getQ(wb2);
+    if(q1&&q2&&q1!==q2) throw new Error('Os arquivos são de quadrimestres diferentes ('+q1+' e '+q2+').');
     var comp=calcComp(wb1);
+    var indM=calcInd(wb2);
     var extM={};
     STATIC.forEach(function(r){ extM[r[0]]={ied:r[9],pop:r[10]}; });
     var merged=Object.keys(comp).map(function(mun){
-      var cr=comp[mun]; var ext=extM[mun]||{};
+      var cr=comp[mun]; var ext=extM[mun]||{}; var ix=indM[mun]||{};
       return {nome:mun,eq:cr.eq,reg:cr.reg,suf:cr.suf,bom:cr.bom,oti:cr.oti,comp:cr.comp,
-              ind:cr.ind!=null?cr.ind:null,iesf:cr.iesf!=null?cr.iesf:null,iesb:cr.iesb!=null?cr.iesb:null,
+              ind:ix.ind!=null?ix.ind:null,iesf:ix.iesf!=null?ix.iesf:null,iesb:ix.iesb!=null?ix.iesb:null,
               ied:ext.ied!=null?ext.ied:null,pop:ext.pop!=null?ext.pop:null};
     });
     merged.sort(function(a,b){
@@ -266,6 +277,51 @@ function processar(){
     }
     rStats(); rend();
   }catch(ex){ showE('Erro: '+ex.message+'\n'+ex.stack); }
+}
+
+function getQ(wb){
+  var rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''});
+  for(var i=0;i<20;i++){
+    var m=String(rows[i]&&rows[i][0]||'').match(/Q([1-4])\/?(\d{2,4})/i);
+    if(m) return 'Q'+m[1]+'/'+m[2].slice(-2);
+  }
+  return null;
+}
+
+// Índices a partir do relatório "Conceito obtido por indicador":
+// cada linha = município × tipo de equipe × indicador, com nº de equipes Regular/Suficiente/Bom/Ótimo.
+// Desempenho = (Ótimo×4+Bom×3+Suficiente×2+Regular×1)/(equipes×4)×100, agregado por todas as linhas do grupo.
+function calcInd(wb){
+  var rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''});
+  var G={esf:['esf','eap'],esb:['esb'],emu:['emulti']};
+  var acc={};
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i];
+    var mun=String(r[3]||'').trim().toUpperCase();
+    var tipo=String(r[4]||'').trim().toLowerCase();
+    if(!mun||mun==='MUNICÍPIO') continue;
+    var g=null;
+    for(var k in G){ if(G[k].indexOf(tipo)>=0) g=k; }
+    if(!g) continue;
+    var reg=parseFloat(r[6])||0,suf=parseFloat(r[7])||0,bom=parseFloat(r[8])||0,oti=parseFloat(r[9])||0;
+    if(!acc[mun]) acc[mun]={esf:{p:0,t:0},esb:{p:0,t:0},emu:{p:0,t:0}};
+    acc[mun][g].p+=oti*4+bom*3+suf*2+reg;
+    acc[mun][g].t+=oti+bom+suf+reg;
+  }
+  if(!Object.keys(acc).length) throw new Error('Arquivo 2: nenhum dado de indicador encontrado.');
+  var res={};
+  Object.keys(acc).forEach(function(mun){
+    var A=acc[mun];
+    function ix(g){return A[g].t>0?A[g].p/(A[g].t*4)*100:null;}
+    var f=ix('esf'),b=ix('esb'),m=ix('emu');
+    var num=0,den=0;
+    if(f!=null){num+=7*f;den+=7;}
+    if(b!=null){num+=6*b;den+=6;}
+    if(m!=null){num+=2*m;den+=2;}
+    function r1(v){return v!=null?Math.round(v*10)/10:null;}
+    res[mun]={iesf:r1(f),iesb:r1(b),iemu:r1(m),ind:den>0?r1(num/den):null};
+  });
+  return res;
 }
 
 function calcComp(wb){
@@ -379,7 +435,8 @@ function rend(){
   }).join('');
 }
 
-function srt(k){if(SK===k)SA=!SA;else{SK=k;SA=(k==='n');}rend();}
+var SMAP={n:'n',r:'reg',s:'suf',b:'bom',o:'oti',c:'comp',i:'ind',iesf:'iesf',iesb:'iesb',e:'ied',q:'eq',p:'pop'};
+function srt(k){k=SMAP[k]||k;if(SK===k)SA=!SA;else{SK=k;SA=(k==='n'||k==='reg'||k==='suf'||k==='ied');}rend();}
 function rb(r){
   if(r===1)return'<span class="rb r1">1°</span>';
   if(r===2)return'<span class="rb r2">2°</span>';
